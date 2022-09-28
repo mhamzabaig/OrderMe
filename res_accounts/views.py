@@ -7,4 +7,4 @@ def ResSignUp(request):
     return HttpResponse('lets get this bastard account')
 
 def homepage(request):
-    return HttpResponse('Hey this is homepage of a restraunt')
+    return render(request,'res_accounts/homepage.html')

@@ -12,10 +12,10 @@ def ResSignUp(request):
         if form.is_valid():
             user = form.save()
             login(request,user)
-            return redirect(request,'restraunts:res_welcome.html')
+            return redirect('restraunts:res_intro')
     else: 
         form = UserCreationForm()
-    return redirect(request,'res_accounts:signupform.html',{'form':form})
+    return render(request,'res_accounts/signupform.html',{'form':form})
 
 
 def homepage(request):

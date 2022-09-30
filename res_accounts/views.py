@@ -1,10 +1,22 @@
-from curses.ascii import HT
-from django.shortcuts import render
+
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm 
+from django.contrib.auth import login,logout
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from requests import post
 # Create your views here.
 
 def ResSignUp(request):
-    return HttpResponse('lets get this bastard account')
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)
+            return redirect(request,'restraunts:res_welcome.html')
+    else: 
+        form = UserCreationForm()
+    return redirect(request,'res_accounts:signupform.html',{'form':form})
+
 
 def homepage(request):
     return render(request,'res_accounts/homepage.html')

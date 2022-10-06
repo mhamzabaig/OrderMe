@@ -1,0 +1,15 @@
+
+
+
+    <h1>LogIn View</h1>
+<form class="site-form" action="{% url 'res_accounts:ResLogIn' %}" method="post">
+    {% csrf_token %}
+    {{form}}
+
+    {% if request.GET %}
+        <input type="hidden" name="next" value="{{request.GET.next}}">
+    {% endif %}
+
+    <input type="submit" value="LogIn">
+
+</form>

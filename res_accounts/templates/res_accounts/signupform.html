@@ -1,5 +1,5 @@
 <h1>Signup View</h1>
-<form class="site-form" action="/res_accounts/SignUp" method="post">
+<form class="site-form" action="{% url 'res_accounts:ResSignUp' %}" method="post">
     {% csrf_token %}
     {{form}}
 

@@ -6,6 +6,31 @@ from django.http import HttpResponse
 from requests import post
 # Create your views here.
 
+def ResLogIn(request):
+
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            # loginUser
+
+            user = form.get_user()
+            login(request,user)
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('restraunts:res_intro')
+
+    else:
+        form = AuthenticationForm()
+    
+    return render(request,'res_accounts/loginform.html',{'form':form})
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('res_accounts:homepage')
+
+
 def ResSignUp(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)

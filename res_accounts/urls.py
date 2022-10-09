@@ -6,7 +6,9 @@ app_name = 'res_accounts'
 
 urlpatterns = [
     path('', views.homepage,name = 'Home'),
-    path('SignUp', views.ResSignUp,name = 'ResSignUp'),
-    path('LogIn', views.ResLogIn,name = 'ResLogIn'),
+    path('Signup', views.ResSignUp,name = 'ResSignUp'),
+    path('Login', views.ResLogIn,name = 'ResLogIn'),
+    path('Logout', views.ResLogOut,name = 'ResLogOut'),
+
         
 ]

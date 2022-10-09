@@ -25,10 +25,10 @@ def ResLogIn(request):
     
     return render(request,'res_accounts/loginform.html',{'form':form})
 
-def logout_view(request):
+def ResLogOut(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('res_accounts:homepage')
+    return redirect('res_accounts:Home')
 
 
 def ResSignUp(request):

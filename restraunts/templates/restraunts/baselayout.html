@@ -5,10 +5,10 @@
 </head>
 <body>
     Welcome My Restraunt
-    <ul>
-        <li>
-            <a href="{% url 'res_accounts:ResLogOut' %}">Logout</a>
-        </li>
-    </ul>
-</body>
+    <li>
+        <form class="logout-link" action="{% url 'res_accounts:ResLogOut' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">LoGOuT</button>
+        </form>
+    </li></body>
 </html>

@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import restraunt
 from .models import User
+from .import forms
 # Create your views here.
 
 @login_required(login_url="res_accounts/login/")
@@ -13,4 +14,5 @@ def restraunt_intro(request):
     return render(request,'restraunts/baselayout.html',{'restraunt':Restraunt})
 
 def edit_profile(request):
-    return HttpResponse('Edit your Profile')
+    form = forms.CreateRestraunt()
+    return render(request,'restraunts/edit_profile.html',{'form':form})

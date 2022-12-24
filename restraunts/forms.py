@@ -4,4 +4,4 @@ from .models import restraunt
 class CreateRestraunt(ModelForm):
     class Meta:
         model = restraunt
-        fields = '__all__'
+        fields = ['name','reg_id','contact_no','email_id']

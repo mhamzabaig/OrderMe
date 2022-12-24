@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import restraunt
@@ -14,5 +14,13 @@ def restraunt_intro(request):
     return render(request,'restraunts/baselayout.html',{'restraunt':Restraunt})
 
 def edit_profile(request):
-    form = forms.CreateRestraunt()
+    if request.method == 'POST':
+        form = forms.CreateRestraunt(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.res_owner = request.user
+            instance.save()
+            return redirect('restraunts:res_intro')
+    else:
+        form = forms.CreateRestraunt()    
     return render(request,'restraunts/edit_profile.html',{'form':form})

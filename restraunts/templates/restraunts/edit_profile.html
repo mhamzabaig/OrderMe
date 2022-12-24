@@ -4,8 +4,10 @@
 
 <div>
     <h2>Edit Your Restraunt Profile</h2>
-    <form class="site-form" action="index.html" method="post">
+    <form class="site-form" action="{% url 'restraunts:edit' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         {{form}}
+        <button type="submit">Edit Profile</button>
     </form>
 </div>
     

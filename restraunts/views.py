@@ -10,7 +10,8 @@ def GetRestraunt(request):
     username = request.user.username    # Getting the user who is logged in 
     user_id = User.objects.get(username = username)     # finding that user
     Restraunt = restraunt.objects.get(res_owner = user_id)     # Finding restraunt of that user
-    return Restraunt
+    
+    return Restraunt 
 
 
 @login_required(login_url="res_accounts/login/")

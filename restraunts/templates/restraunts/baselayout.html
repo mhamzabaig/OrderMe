@@ -11,8 +11,12 @@
             <button type="submit">LoGOuT</button>
         </form>
     </li>
-    <div>    {{restraunt.name}}
-    </div>
+
+    {% if "{{restraunt.name}}" == "" %}
+        <div>Hello</div>
+    {% endif %}
+    <div>{{ restraunt.name }}</div>    
+
 
     {% block content%}
     {% endblock%}

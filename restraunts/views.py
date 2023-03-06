@@ -7,12 +7,12 @@ from .import forms
 # Create your views here.
 
 def GetRestraunt(request):
+    
     username = request.user.username    # Getting the user who is logged in 
     user_id = User.objects.get(username = username)     # finding that user
     Restraunt = restraunt.objects.get(res_owner = user_id)     # Finding restraunt of that user
     
-    return Restraunt 
-
+    return Restraunt
 
 @login_required(login_url="res_accounts/login/")
 def restraunt_intro(request):
@@ -31,5 +31,18 @@ def edit_profile(request):
             return redirect('restraunts:res_intro')
     else:
         form = forms.CreateRestraunt()    
-    return render(request,'restraunts/edit_profile.html',{'form':form})   
+    return render(request,'restraunts/edit_profile.html',{'form':form})
+
+def completeResProfile(request):
+    if request.method == 'POST':
+        form = forms.CreateRestraunt(request.POST)
+        # form.res_owner = User.objects.get(username = request.user.username)
+        
+        if form.is_valid():
+            # form.save()
+            return redirect('restraunts:res_intro')
+    else:
+        form = forms.CreateRestraunt()    
+    return render(request,'restraunts/complete_profile.html',{'form':form})
+    
     

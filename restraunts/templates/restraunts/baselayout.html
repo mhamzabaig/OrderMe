@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Restraunts</title>
-</head>
-<body>
+  </head>
+  <body>
     Welcome My Restraunt
     <li>
-        <form class="logout-link" action="{% url 'res_accounts:ResLogOut' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">LoGOuT</button>
-        </form>
+      <form
+        class="logout-link"
+        action="{% url 'res_accounts:ResLogOut' %}"
+        method="post"
+      >
+        {% csrf_token %}
+        <button type="submit">LoGOuT</button>
+      </form>
+      <form
+        class="edit-link"
+        action="{% url 'restraunts:edit' %}"
+        method="post"
+      >
+        {% csrf_token %}
+        <button>Edit Profile</button>
+      </form>
     </li>
 
-    {% if "{{restraunt.name}}" == "" %}
-        <div>Hello</div>
-    {% endif %}
-    <div>{{ restraunt.name }}</div>    
+    <div>{{ restraunt.name }}</div>
 
-
-    {% block content%}
-    {% endblock%}
-</body>
+    {% block content%} {% endblock%}
+  </body>
 </html>

@@ -37,7 +37,7 @@ def ResSignUp(request):
         if form.is_valid():
             user = form.save()
             login(request,user)
-            return redirect('restraunts:edit')
+            return redirect('restraunts:completeProfile')
     else: 
         form = UserCreationForm()
     return render(request,'res_accounts/signupform.html',{'form':form})

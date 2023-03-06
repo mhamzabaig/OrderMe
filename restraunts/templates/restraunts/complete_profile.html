@@ -1,15 +1,15 @@
 {% extends './baselayout.html' %} {% block content %}
 
 <div>
-  <h2>Edit Your Restraunt Profile</h2>
+  <h2>Complete Your Restraunt Profile</h2>
   <form
     class="site-form"
-    action="{% url 'restraunts:edit' %}"
+    action="{% url 'restraunts:completeProfile' %}"
     method="post"
     enctype="multipart/form-data"
   >
     {% csrf_token %} {{form}}
-    <button type="submit">Edit Profile</button>
+    <button type="submit">Add Profile Info</button>
   </form>
 </div>
 

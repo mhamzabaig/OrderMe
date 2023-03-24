@@ -21,28 +21,28 @@ def restraunt_intro(request):
 def edit_profile(request):
     if request.method == 'POST':
         form = forms.CreateRestraunt(request.POST)
+        
         if form.is_valid():
             instance = GetRestraunt(request)
             instance.name = request.POST['name']            
             instance.reg_id = request.POST['reg_id']            
             instance.contact_no = request.POST['contact_no']            
-            instance.email_id = request.POST['email_id']            
+            instance.email_id = request.POST['email_id']
+            # instance.res_owner = request.POST['res_owner']            
             instance.save()
             return redirect('restraunts:res_intro')
     else:
-        form = forms.CreateRestraunt()    
+        form = forms.CreateRestraunt()        
     return render(request,'restraunts/edit_profile.html',{'form':form})
 
 def completeResProfile(request):
     if request.method == 'POST':
         form = forms.CreateRestraunt(request.POST)
-        # form.res_owner = User.objects.get(username = request.user.username)
+        form.res_owner = User.objects.get(username = request.user.username)
         
         if form.is_valid():
-            # form.save()
+            form.save()
             return redirect('restraunts:res_intro')
     else:
         form = forms.CreateRestraunt()    
     return render(request,'restraunts/complete_profile.html',{'form':form})
-    
-    
